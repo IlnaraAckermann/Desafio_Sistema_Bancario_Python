@@ -16,8 +16,10 @@ LIMITE_SAQUES = 3
 while True:
     opcao = input(menu)
     if opcao == "1":
-        print("depósito")
-   
+        deposito = float(input(f"Informe o valor do depósito: \n"))
+        saldo += deposito
+        extrato += f"\n Depósito: R${deposito:.2f}"
+        print(f"Saldo disponível: R${saldo:.2f}")
 
     if opcao == "2":
         print("saque")
