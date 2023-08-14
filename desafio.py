@@ -22,8 +22,24 @@ while True:
         print(f"Saldo disponível: R${saldo:.2f}")
 
     if opcao == "2":
-        print("saque")
-   
+        if saldo != 0 :
+            saque = float(input(f"Informe o valor do saque: \n"))
+            if saque>saldo:
+                print(f"Saldo insuficiente \n Saldo disponível: R${saldo:.2f}")
+            elif numero_saques >= LIMITE_SAQUES:
+                print(f"Limite de saques diários atingido.")
+            elif saque>limite:
+                print(f"""Operação não realizada...
+Seu limite para saque é de R${limite:.2f} 
+Saldo disponível: R${saldo:.2f}""")                
+            else: 
+                saldo -= saque
+                extrato += f"\n Saque: R${saque:.2f}"
+                numero_saques+=1            
+                print(f"Saldo disponível: R${saldo:.2f}")
+        else: 
+            print(f"""Saldo insuficiente
+Saldo disponível: R${saldo:.2f}""") 
 
     if opcao == "3":
         print("extrato")         
@@ -32,5 +48,5 @@ while True:
         print("Obrigado por utilizar o Banco DIO! Volte sempre!")
         break
 
-else:
-    print(f"Operação inválida, por favor selecione novamente a operação desejada.")
+    if opcao != '0' and opcao != '1' and opcao != '2' and opcao != '3' :
+        print(f"Operação inválida, por favor selecione novamente a operação desejada.")
