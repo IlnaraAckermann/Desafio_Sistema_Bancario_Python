@@ -42,7 +42,10 @@ Saldo disponível: R${saldo:.2f}""")
 Saldo disponível: R${saldo:.2f}""") 
 
     if opcao == "3":
-        print("extrato")         
+        if extrato == '' :
+            print("Não foram realizadas movimentações.")
+        else:
+            print(f"Saldo disponível: R${saldo:.2f} \n {extrato}")        
 
     if opcao == "0":
         print("Obrigado por utilizar o Banco DIO! Volte sempre!")
