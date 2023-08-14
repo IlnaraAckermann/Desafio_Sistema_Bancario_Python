@@ -18,10 +18,10 @@ while True:
     if opcao == "1":
         deposito = float(input(f"Informe o valor do depósito: \n"))
         saldo += deposito
-        extrato += f"\n Depósito: R${deposito:.2f}"
+        extrato += f"\nDepósito: R${deposito:.2f}"
         print(f"Saldo disponível: R${saldo:.2f}")
 
-    if opcao == "2":
+    elif opcao == "2":
         if saldo != 0 :
             saque = float(input(f"Informe o valor do saque: \n"))
             if saque>saldo:
@@ -34,22 +34,23 @@ Seu limite para saque é de R${limite:.2f}
 Saldo disponível: R${saldo:.2f}""")                
             else: 
                 saldo -= saque
-                extrato += f"\n Saque: R${saque:.2f}"
+                extrato += f"\nSaque: R${saque:.2f}"
                 numero_saques+=1            
                 print(f"Saldo disponível: R${saldo:.2f}")
         else: 
             print(f"""Saldo insuficiente
 Saldo disponível: R${saldo:.2f}""") 
 
-    if opcao == "3":
+    elif opcao == "3":
         if extrato == '' :
             print("Não foram realizadas movimentações.")
         else:
-            print(f"Saldo disponível: R${saldo:.2f} \n {extrato}")        
+            print(f"""Saldo disponível: R${saldo:.2f}
+                  {extrato}""")        
 
-    if opcao == "0":
+    elif opcao == "0":
         print("Obrigado por utilizar o Banco DIO! Volte sempre!")
         break
 
-    if opcao != '0' and opcao != '1' and opcao != '2' and opcao != '3' :
+    else:
         print(f"Operação inválida, por favor selecione novamente a operação desejada.")
