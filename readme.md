@@ -1,6 +1,6 @@
 # Desafio Python DIO - Sistema Bancário 💰
 
-Bem-vindo ao Desafio Python da Digital Innovation One! Neste desafio, você vou criar um modelo de sistema bancário simples com as operações de saque, depósito e visualização de extrato. Vamos começar!
+Bem-vindo ao Desafio Python da Digital Innovation One! Neste desafio, você vai criar um modelo de sistema bancário simples com as operações de saque, depósito e visualização de extrato. Vamos começar!
 
 ## Versão 1.0 - Sistema Bancário
 
@@ -65,9 +65,20 @@ Escolha uma opção:
 Opção: 0
 
 Obrigado por utilizar o Banco DIO! Volte sempre!
+
 ```
 
-Se você achou este repositório útil e interessante, por favor, considere deixar uma estrela ⭐🤩
-Estou aberta a perguntas e sugestões para melhorias. Sinta-se à vontade para compartilhar seus comentários e ideias. Sua opinião é muito importante para mim!
+### Versão 2.0 - Otimização e Modularização
+
+Nesta segunda versão, vamos otimizar e modularizar o código, organizando as operações de saque, depósito e extrato em funções. Além disso, vamos adicionar novas funcionalidades:
+
+- **Cadastrar Usuário**: Função para cadastrar um novo usuário com informações pessoais.
+- **Cadastrar Conta Bancária**: Função para cadastrar uma nova conta bancária para um usuário.
+- **Listar Contas**: Função para listar todas as contas bancárias cadastradas.
+- **Listar Usuários**: Função para listar todos os usuários cadastrados.
+
+Vamos continuar aprimorando nosso sistema bancário para torná-lo mais eficiente e organizado. Mãos à obra! 🚀🌟
+
+Se você achou este repositório útil e interessante, por favor, considere deixar uma estrela ⭐🤩 Estou aberta a perguntas e sugestões para melhorias. Sinta-se à vontade para compartilhar seus comentários e ideias. Sua opinião é muito importante para mim!
 
 Vamos continuar aprendendo e crescendo na jornada de programação. Até a próxima e bons estudos! 🌟🚀🐍
