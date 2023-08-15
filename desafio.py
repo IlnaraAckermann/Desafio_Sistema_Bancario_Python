@@ -13,12 +13,18 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
+
+def gerar_extrato(prefixo, valor):
+    global extrato
+    extrato += f"{prefixo} R${valor:2f}"
+    return extrato
+
 def depositar(deposito):
     global saldo
     saldo += deposito
     print("\nDepósito realizado com sucesso!\n")
     print(f"Saldo disponível: R${saldo:.2f}")
-    #extrato += f"\n- Depósito: R${deposito:.2f}"
+    gerar_extrato("\n- Depósito: ", deposito)
     return saldo
 
 def sacar(saque):
@@ -36,15 +42,12 @@ Seu limite para saque é de R${limite:.2f}
 Saldo disponível: R${saldo:.2f}
 """)
     else:
-            saldo -= saque
-            # extrato += f"\n- Saque: R${saque:.2f}"
-            numero_saques += 1
-            print(f"\nSaque realizado com sucesso!\nSaldo disponível: R${saldo:.2f}")
-            return saldo
+        saldo -= saque
+        gerar_extrato("\n- Saque: ", saque)
+        numero_saques += 1
+        print(f"\nSaque realizado com sucesso!\nSaldo disponível: R${saldo:.2f}")
+        return saldo
 
-def gerar_extrato(valor):
-    global extrato
-    
 
 
 while True:
