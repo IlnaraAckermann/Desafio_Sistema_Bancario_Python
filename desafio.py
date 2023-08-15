@@ -13,14 +13,20 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
+def depositar(valor):
+    global saldo
+    saldo += deposito
+    print("\nDepósito realizado com sucesso!\n")
+    print(f"Saldo disponível: R${saldo:.2f}")
+    return saldo
+
+
 while True:
     opcao = input(menu)
     if opcao == "1":
         deposito = float(input(f"Informe o valor do depósito: \n"))
-        saldo += deposito
+        depositar(deposito)
         extrato += f"\n- Depósito: R${deposito:.2f}"
-        print("\nDepósito realizado com sucesso!\n")
-        print(f"Saldo disponível: R${saldo:.2f}")
 
     elif opcao == "2":
         if saldo != 0:
