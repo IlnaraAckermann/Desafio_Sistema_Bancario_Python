@@ -13,53 +13,54 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
-def depositar(valor):
+def depositar(deposito):
     global saldo
     saldo += deposito
     print("\nDepósito realizado com sucesso!\n")
     print(f"Saldo disponível: R${saldo:.2f}")
+    #extrato += f"\n- Depósito: R${deposito:.2f}"
     return saldo
 
-
-while True:
-    opcao = input(menu)
-    if opcao == "1":
-        deposito = float(input(f"Informe o valor do depósito: \n"))
-        depositar(deposito)
-        extrato += f"\n- Depósito: R${deposito:.2f}"
-
-    elif opcao == "2":
-        if saldo != 0:
-            saque = float(input(f"Informe o valor do saque: \n"))
-            if saque > saldo:
-                print(f"Saldo insuficiente \nSaldo disponível: R${saldo:.2f}")
-            elif numero_saques >= LIMITE_SAQUES:
-                print(f"Limite de saques diários atingido.")
-            elif saque > limite:
-                print(
-                    f"""
+def sacar(saque):
+    global saldo
+    global numero_saques
+    if saque > saldo:
+        print(f"Saldo insuficiente\nSaldo disponível: R${saldo:.2f}")
+    elif saque > limite:
+        print(f"""
 Saque não permitido.
 
 Seu limite para saque é de R${limite:.2f} 
 
 Saldo disponível: R${saldo:.2f}
-"""
-                )
-            else:
-                saldo -= saque
-                extrato += f"\n- Saque: R${saque:.2f}"
-                numero_saques += 1
-                print("\nSaque realizado com sucesso!\n")
-                print(f"Saldo disponível: R${saldo:.2f}")
+""")
+    else:
+            saldo -= saque
+            # extrato += f"\n- Saque: R${saque:.2f}"
+            numero_saques += 1
+            print("\nSaque realizado com sucesso!\nSaldo disponível: R${saldo:.2f}")
+
+
+    
+
+
+while True:
+    
+    opcao = input(menu)
+    
+    if opcao == "1":
+        deposito = float(input(f"Informe o valor do depósito: \n"))
+        depositar(deposito)
+
+    elif opcao == "2":
+        if saldo > 0 and numero_saques < LIMITE_SAQUES:
+            saque = float(input(f"Informe o valor do saque: \n"))
+            sacar(saque)
+        elif numero_saques >= LIMITE_SAQUES:
+            print(f"Limite de saque diário atingido.")
         else:
-            print(
-                f"""
-Saldo insuficiente
-
-Saldo disponível: R${saldo:.2f}
-"""
-            )
-
+            print(f"\nSaldo insuficidente\nSaldo atual: R${saldo}")
+           
     elif opcao == "3":
         if extrato == "":
             print("Não foram realizadas movimentações.")
