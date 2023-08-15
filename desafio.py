@@ -24,6 +24,7 @@ def depositar(deposito):
 def sacar(saque):
     global saldo
     global numero_saques
+    global limite
     if saque > saldo:
         print(f"Saldo insuficiente\nSaldo disponível: R${saldo:.2f}")
     elif saque > limite:
@@ -38,9 +39,11 @@ Saldo disponível: R${saldo:.2f}
             saldo -= saque
             # extrato += f"\n- Saque: R${saque:.2f}"
             numero_saques += 1
-            print("\nSaque realizado com sucesso!\nSaldo disponível: R${saldo:.2f}")
+            print(f"\nSaque realizado com sucesso!\nSaldo disponível: R${saldo:.2f}")
+            return saldo
 
-
+def gerar_extrato(valor):
+    global extrato
     
 
 
