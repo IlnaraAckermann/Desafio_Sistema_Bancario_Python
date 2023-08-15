@@ -19,6 +19,7 @@ def gerar_extrato(prefixo, valor):
     extrato += f"{prefixo} R${valor:2f}"
     return extrato
 
+
 def depositar(deposito):
     global saldo
     saldo += deposito
@@ -27,6 +28,7 @@ def depositar(deposito):
     gerar_extrato("\n- Depósito: ", deposito)
     return saldo
 
+
 def sacar(saque):
     global saldo
     global numero_saques
@@ -34,13 +36,15 @@ def sacar(saque):
     if saque > saldo:
         print(f"Saldo insuficiente\nSaldo disponível: R${saldo:.2f}")
     elif saque > limite:
-        print(f"""
+        print(
+            f"""
 Saque não permitido.
 
 Seu limite para saque é de R${limite:.2f} 
 
 Saldo disponível: R${saldo:.2f}
-""")
+"""
+        )
     else:
         saldo -= saque
         gerar_extrato("\n- Saque: ", saque)
@@ -49,11 +53,21 @@ Saldo disponível: R${saldo:.2f}
         return saldo
 
 
+def cadastrar_cliente(nome, data_nascimento, cpf, endereco):
+    pessoa = {
+        "nome": nome,
+        "data_nascimento": data_nascimento,
+        "cpf": cpf,
+        "endereco": endereco,
+    }
+    return pessoa
+    
+
+
 
 while True:
-    
     opcao = input(menu)
-    
+
     if opcao == "1":
         deposito = float(input(f"Informe o valor do depósito: \n"))
         depositar(deposito)
@@ -66,7 +80,7 @@ while True:
             print(f"Limite de saque diário atingido.")
         else:
             print(f"\nSaldo insuficidente\nSaldo atual: R${saldo}")
-           
+
     elif opcao == "3":
         if extrato == "":
             print("Não foram realizadas movimentações.")
