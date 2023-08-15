@@ -61,7 +61,14 @@ def cadastrar_cliente(nome, data_nascimento, cpf, endereco):
         "endereco": endereco,
     }
     return pessoa
-    
+
+def cadastrar_conta(agencia, numero, cliente):
+    conta = {
+            "agencia": agencia,
+            "numero": numero,
+            "cliente": cliente,
+        }
+    return conta
 
 
 
