@@ -40,7 +40,7 @@ def exibir_extrato(conta_selecionada):
         print("Não foram realizadas movimentações.")
     else:
         print(f"""
-Extrato da conta {conta_selecionada}
+Extrato da conta: {conta_selecionada['numero']}
 
 {extrato}
               
