@@ -114,7 +114,7 @@ def listar_contas_do_usuario():
     print(contas)
 
 
-def exibir_menu_logado_sem_conta():
+def exibir_menu_logado_sem_conta(user_cpf):
     while True:
         global contas
         global clientes
@@ -133,13 +133,9 @@ def exibir_menu_logado_sem_conta():
                 
         elif opcao == "2": #Cadastrar conta
             print(f"Cadastro de conta\n")
-            cpf = input("CPF: \n")
-            if cpf in clientes:
-                agencia = input("Agência: \n")
-                qtd_conta+=1
-                cadastrar_conta(agencia, qtd_conta, cpf)
-            else:
-                print(f"Usuário não encontrado")
+            agencia = input("Agência: \n")
+            qtd_conta+=1
+            cadastrar_conta(agencia, qtd_conta, user_cpf)
                 
         elif opcao == "0": #Sair
             print("Deslogando...\n")
@@ -179,7 +175,7 @@ while True:
             user_cpf = input("Informe seu CPF:\n")
             if user_cpf in clientes:
                 is_logged = True
-                exibir_menu_logado_sem_conta()
+                exibir_menu_logado_sem_conta(user_cpf)
             else:
                 print(f"Usuário não encontrado...\n")
     elif opcao == '2': #Cadastrar Usuário
