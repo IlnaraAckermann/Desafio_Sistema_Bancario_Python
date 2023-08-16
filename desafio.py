@@ -127,7 +127,7 @@ def exibir_menu_logado_sem_conta(user_cpf):
                 print(contas)
                 conta_selecionada = int(input("Selecione a conta: \n"))
                 if conta_selecionada in contas:
-                    exibir_menu_logado_com_conta()
+                    exibir_menu_logado_com_conta(conta_selecionada)
                 else: 
                     print(f"Conta não encontrada...")
                 
@@ -144,7 +144,7 @@ def exibir_menu_logado_sem_conta(user_cpf):
         else:
             print(f"\nOperação inválida, por favor selecione novamente a operação desejada.")
 
-def exibir_menu_logado_com_conta():
+def exibir_menu_logado_com_conta(conta_selecionada):
     while True:
         opcao = input(menu_logado_com_conta)
 
