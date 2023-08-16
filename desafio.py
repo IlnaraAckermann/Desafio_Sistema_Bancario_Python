@@ -142,8 +142,12 @@ while True:
         if not clientes:
             print(f"Não há usuários cadastrados.")
         else:
-            is_logged = True
-            exibir_menu_logado()
+            user_cpf = input("Informe seu CPF:\n")
+            if user_cpf in clientes:
+                is_logged = True
+                exibir_menu_logado()
+            else:
+                print(f"Usuário não encontrado...\n")
     elif opcao == '2': #Cadastrar Usuário
         print(f"Cadastro de Usuário\n")
         cpf = input("CPF: \n")
