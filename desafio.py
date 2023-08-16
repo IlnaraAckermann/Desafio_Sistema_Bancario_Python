@@ -1,10 +1,17 @@
-menu_logado = """
+menu_logado_com_conta = """
 Escolha uma opção:
 1 - Depósito
 2 - Saque
 3 - Visualizar Extrato
-4 - Cadastrar Conta
-0 - Sair
+0 - Sair da Conta
+"""
+
+menu_logado_sem_conta = """
+Bem vindo nome_variavel!
+Escolha uma opção
+1 - Selecionar Conta
+2 - Criar nova Conta
+0 - Deslogar
 """
 
 menu_inicial="""
@@ -97,18 +104,53 @@ def cadastrar_conta(agencia, numero, cliente):
             "numero": str(numero).zfill(5),
             "cliente": cliente
         }
-    contas.add(conta)
+    contas[numero]=conta
+    print("Conta cadastrada com sucesso.")
 
 def listar_usuários():
     print(clientes)
     
-def listar_contas():
+def listar_contas_do_usuario():
     print(contas)
 
 
-def exibir_menu_logado():
+def exibir_menu_logado_sem_conta():
     while True:
-        opcao = input(menu_logado)
+        global contas
+        global clientes
+        global qtd_conta
+        opcao=input(menu_logado_sem_conta)
+        if opcao=="1":
+            if not contas:
+                print(f"Não há contas cadastradas.")
+            else:
+                print(contas)
+                conta_selecionada = int(input("Selecione a conta: \n"))
+                if conta_selecionada in contas:
+                    exibir_menu_logado_com_conta()
+                else: 
+                    print(f"Conta não encontrada...")
+                
+        elif opcao == "2": #Cadastrar conta
+            print(f"Cadastro de conta\n")
+            cpf = input("CPF: \n")
+            if cpf in clientes:
+                agencia = input("Agência: \n")
+                qtd_conta+=1
+                cadastrar_conta(agencia, qtd_conta, cpf)
+            else:
+                print(f"Usuário não encontrado")
+                
+        elif opcao == "0": #Sair
+            print("Deslogando...\n")
+            break
+
+        else:
+            print(f"\nOperação inválida, por favor selecione novamente a operação desejada.")
+
+def exibir_menu_logado_com_conta():
+    while True:
+        opcao = input(menu_logado_com_conta)
 
         if opcao == "1": #Deposito
             depositar()
@@ -118,17 +160,9 @@ def exibir_menu_logado():
 
         elif opcao == "3": #extrato
             exibir_extrato()
-
-        elif opcao == "4": #Cadastrar conta
-            print(f"Cadastro de conta\n")
-            cpf = input("CPF: \n")
-            if cpf in clientes:
-                agencia = input("Agência: \n")
-                qtd_conta+=1
-                cadastrar_conta(agencia, qtd_conta, cpf)
                   
         elif opcao == "0": #Sair
-                print("Usuário deslogado...")
+                print("Saindo da conta...")
                 break
 
         else:
@@ -145,7 +179,7 @@ while True:
             user_cpf = input("Informe seu CPF:\n")
             if user_cpf in clientes:
                 is_logged = True
-                exibir_menu_logado()
+                exibir_menu_logado_sem_conta()
             else:
                 print(f"Usuário não encontrado...\n")
     elif opcao == '2': #Cadastrar Usuário
